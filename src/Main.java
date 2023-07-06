@@ -83,18 +83,74 @@ public class Main {
         int[][] array = new int[rows][columns];
         getRandomValuesForMatrix(array);
 
-        System.out.println("The matrix is");
+        int min = array [0][0];
+        int indexA = 0;
+        int indexB = 0;
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[0].length; j++) {
+                if (min > array[i][j]) {
+                    min = array[i][j];
+                    indexA = i;
+                    indexB = j;
+                }
+            }
+        }
+        System.out.println("The matrix is: ");
         System.out.println(Arrays.deepToString(array));
 
-        System.out.println("The max value is " + findMaxInMatrix(array));
+        System.out.println("The min value is " + findMinInMatrix(array));
+        System.out.println("The indices of the min value are " + indexA + ", " + indexB);
     }
 
     public static void task4 () {
         System.out.println("\nTask 4");
+        int rows = 4;
+        int columns = 4;
+        int[][] array = new int[rows][columns];
+        getRandomValuesForMatrix(array);
+
+        int max = array [0][0];
+        int indexA = 0;
+        int indexB = 0;
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[0].length; j++) {
+                if (max < array[i][j]) {
+                    max = array[i][j];
+                    indexA = i;
+                    indexB = j;
+                }
+            }
+        }
+        System.out.println("The matrix is: ");
+        System.out.println(Arrays.deepToString(array));
+
+        System.out.println("The max value is " + findMaxInMatrix(array));
+        System.out.println("The indices of the max value are " + indexA + ", " + indexB);
     }
 
     public static void task5 () {
         System.out.println("\nTask 5");
+        int rows = 4;
+        int columns = 4;
+        int[][] array = new int[rows][columns];
+        getRandomValuesForMatrix(array);
+
+        int counter = 0;
+
+        if (array[0][0] > array[1][0] && array[0][0] > array[0][1]) {
+            counter++;
+        }
+
+        for (int i = 1; i < array.length - 1; i++) {
+            for (int j = 1; j < array[0].length - 1; j++) {
+                if (array[i][j] > array[i + 1][j] && array[i][j] > array[i][j + 1]
+                        && array[i][j] > array[i - 1][j] &&array[i][j] > array[i][j - 1]) {
+                    counter++;
+                }
+            }
+        }
+
+        System.out.println(counter);
     }
 
     public static void task6 () {
