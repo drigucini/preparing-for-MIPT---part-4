@@ -50,6 +50,7 @@ public class Main {
         }
         return max;
     }
+
     public static void task1 () {
         System.out.println("Task 1");
         int rows = 2;
@@ -76,6 +77,8 @@ public class Main {
         System.out.println("The max value is " + findMaxInMatrix(array));
     }
 
+
+
     public static void task3 () {
         System.out.println("\nTask 3");
         int rows = 4;
@@ -83,13 +86,12 @@ public class Main {
         int[][] array = new int[rows][columns];
         getRandomValuesForMatrix(array);
 
-        int min = array [0][0];
+//        int min = array [0][0];
         int indexA = 0;
         int indexB = 0;
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array[0].length; j++) {
-                if (min > array[i][j]) {
-                    min = array[i][j];
+                if (array[i][j] < array[indexA][indexB]) {
                     indexA = i;
                     indexB = j;
                 }
