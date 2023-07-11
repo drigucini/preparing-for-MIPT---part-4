@@ -177,7 +177,21 @@ public class Main {
     }
 
     public static void task7 () {
-        System.out.println("\nTask 7");
+        System.out.println("\nTask 7a");
+        int rows = 4;
+        int columns = 4;
+        int[][] array = new int[rows][columns];
+        getRandomValuesForMatrix(array);
+        System.out.println(Arrays.deepToString(array));
+
+        int[] vectorA = new int[columns];
+        for (int j = 0; j < array[0].length; j++) {
+            for (int i = 0; i < array.length; i++) {
+
+            }
+        }
+
+        System.out.println("\nTask 7b");
     }
 
     public static void task8 () {
