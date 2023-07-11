@@ -86,7 +86,6 @@ public class Main {
         int[][] array = new int[rows][columns];
         getRandomValuesForMatrix(array);
 
-//        int min = array [0][0];
         int indexA = 0;
         int indexB = 0;
         for (int i = 0; i < array.length; i++) {
@@ -106,18 +105,16 @@ public class Main {
 
     public static void task4 () {
         System.out.println("\nTask 4");
-        int rows = 4;
-        int columns = 4;
+        int rows = 5;
+        int columns = 7;
         int[][] array = new int[rows][columns];
         getRandomValuesForMatrix(array);
 
-        int max = array [0][0];
         int indexA = 0;
         int indexB = 0;
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array[0].length; j++) {
-                if (max < array[i][j]) {
-                    max = array[i][j];
+                if (array[i][j] > array[indexA][indexB]) {
                     indexA = i;
                     indexB = j;
                 }
@@ -132,31 +129,51 @@ public class Main {
 
     public static void task5 () {
         System.out.println("\nTask 5");
-        int rows = 4;
-        int columns = 4;
+        int rows = 3;
+        int columns = 3;
         int[][] array = new int[rows][columns];
         getRandomValuesForMatrix(array);
 
-        int counter = 0;
+        int[][] arrayTemp = new int[rows + 2][columns + 2];
 
-        if (array[0][0] > array[1][0] && array[0][0] > array[0][1]) {
-            counter++;
+        for (int i = 1; i < arrayTemp.length - 1; i++) {
+            for (int j = 1; j < arrayTemp[0].length - 1; j++) {
+                arrayTemp[i][j] = array[i - 1][j - 1];
+            }
         }
 
-        for (int i = 1; i < array.length - 1; i++) {
-            for (int j = 1; j < array[0].length - 1; j++) {
-                if (array[i][j] > array[i + 1][j] && array[i][j] > array[i][j + 1]
-                        && array[i][j] > array[i - 1][j] &&array[i][j] > array[i][j - 1]) {
+        System.out.println(Arrays.deepToString(arrayTemp));
+        int counter = 0;
+        for (int i = 1; i < arrayTemp.length - 1; i++) {
+            for (int j = 1; j < arrayTemp[0].length - 1; j++) {
+                if (arrayTemp[i][j] > arrayTemp[i + 1][j] && arrayTemp[i][j] > arrayTemp[i][j + 1]
+                        && arrayTemp[i][j] > arrayTemp[i - 1][j] &&arrayTemp[i][j] > arrayTemp[i][j - 1]) {
                     counter++;
                 }
             }
         }
-
         System.out.println(counter);
     }
 
     public static void task6 () {
         System.out.println("\nTask 6");
+        int rows = 4;
+        int columns = 4;
+        int[][] array = new int[rows][columns];
+        getRandomValuesForMatrix(array);
+        System.out.println(Arrays.deepToString(array));
+
+        int[][] arrayFinal = new int[rows][columns];
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[0].length; j++) {
+                if (i == j) {
+                    arrayFinal[i][j] = array[i][j];
+                } else{
+                    arrayFinal[i][j] = array[j][i];
+                }
+            }
+        }
+        System.out.println(Arrays.deepToString(arrayFinal));
     }
 
     public static void task7 () {
