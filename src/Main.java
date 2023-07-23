@@ -26,6 +26,16 @@ public class Main {
         }
         return array;
     }
+    public static double[][] getRandomValuesForMatrix(double[][] array) {
+        int min = -100;
+        int max = 100;
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[0].length; j++) {
+                array[i][j] = (Math.random()*(max-min+1)+min);
+            }
+        }
+        return array;
+    }
 
     public static int findMinInMatrix(int[][] array) {
         int min = array [0][0];
@@ -177,21 +187,56 @@ public class Main {
     }
 
     public static void task7 () {
-        System.out.println("\nTask 7a");
+        System.out.println("\nTask 7");
         int rows = 4;
         int columns = 4;
-        int[][] array = new int[rows][columns];
-        getRandomValuesForMatrix(array);
+//        double[][] array = new double[rows][columns];
+//        getRandomValuesForMatrix(array);
+        double[][] array = new double[][]{
+            {1, 0, 3, 4},
+            {2, 0, 3, 4},
+            {0, 0, 5, 9}
+
+        };
         System.out.println(Arrays.deepToString(array));
 
-        int[] vectorA = new int[columns];
-        for (int j = 0; j < array[0].length; j++) {
-            for (int i = 0; i < array.length; i++) {
 
+        System.out.println("\nTask 7a");
+        Boolean[] vectorA = new Boolean[array[0].length];
+        for (int j = 0; j < array[0].length; j++) {
+            double sum = 0;
+            for (int i = 0; i < array.length; i++) {
+                sum += array[i][j];
+            }
+            if (Math.abs(sum) < 1e-10) {
+                vectorA[j] = true;
+            } else {
+                vectorA[j] = false;
+            }
+        }
+        System.out.println(Arrays.deepToString(vectorA));
+
+        System.out.println("\nTask 7b");
+        boolean[] vectorB = new boolean[array[0].length];
+        for (int i = 0; i < array.length; i++) {
+            int[] temp = new int [array[0].length - 1];
+            for (int j = 0; j < array[0].length - 1; j++) {
+                if (array[i][j] >= array[i + 1][j + 1]) {
+                    temp[j] = 0;
+                } else {
+                    temp[j] = 1;
+                }
+            }
+            int sum = 0;
+            for (int k = 0; k < array[0].length - 1; k++) {
+                sum += temp[k];
+            }
+            if (sum == 0) {
+                vectorB[0] = true;
             }
         }
 
-        System.out.println("\nTask 7b");
+        }
     }
 
     public static void task8 () {
